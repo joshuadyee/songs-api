@@ -10,13 +10,13 @@ class SongsController < ApplicationController
   end
 
   def create
-    song = Song.new(
-      title: "Black Beatles",
-      album: "SremmLife 2",
-      artist: "Rae Sremmurd",
-      year: "2016"
+    @song = Song.new(
+      title: params[:title],
+      album: params[:album],
+      artist: params[:artist],
+      year: params[:year]
     )
-    song.save
-    render json: {song: song}
+    @song.save
+    render template: "songs/show"
   end
 end
